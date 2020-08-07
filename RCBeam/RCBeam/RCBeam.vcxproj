@@ -139,9 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Concrete.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="RCBeam.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Concrete.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
