@@ -7,6 +7,9 @@ protected:
     // protected elements here
     double m_CompressiveStrength;
 
+    // Strain Properties
+    std::vector<double> m_epsilon;
+
 public:
     // public elements here
 	// Any virtual functions should go here.

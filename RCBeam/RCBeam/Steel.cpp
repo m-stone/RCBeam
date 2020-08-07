@@ -7,6 +7,10 @@ Steel::Steel()
 	m_YieldStrength = 60.0e3;
 	m_YieldStrain = 0.002;
 	SteelModel = SteelModelType::Elastic;
+	AddStrainValue(0.0);
+	AddStrainValue(m_YieldStrain);
+	AddStressValue(0.0);
+	AddStressValue(m_YieldStrength);
 }
 
 Steel::Steel(double yield_strength, double modulus)
