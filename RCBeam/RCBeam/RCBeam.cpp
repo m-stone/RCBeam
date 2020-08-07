@@ -2,6 +2,9 @@
 //
 
 #include "pch.h"
+#include "Material.h"
+#include "Concrete.h"
+#include "Steel.h"
 
 int main()
 {
