@@ -33,6 +33,12 @@
     <ClCompile Include="Steel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BeamShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RectangularBeam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -46,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="Steel.h">
       <Filter>Header Files\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="BeamShape.h">
+      <Filter>Header Files\BeamShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="RectangularBeam.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

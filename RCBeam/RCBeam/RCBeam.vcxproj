@@ -139,15 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BeamShape.cpp" />
     <ClCompile Include="Concrete.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="RCBeam.cpp" />
+    <ClCompile Include="RectangularBeam.cpp" />
     <ClCompile Include="Steel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BeamShape.h" />
     <ClInclude Include="Concrete.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="RectangularBeam.h" />
     <ClInclude Include="Steel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
