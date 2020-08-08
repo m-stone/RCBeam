@@ -143,6 +143,7 @@
     <ClCompile Include="Concrete.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="RCBeam.cpp" />
+    <ClCompile Include="Rebar.cpp" />
     <ClCompile Include="RectangularBeam.cpp" />
     <ClCompile Include="Steel.cpp" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="Concrete.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Rebar.h" />
     <ClInclude Include="RectangularBeam.h" />
     <ClInclude Include="Steel.h" />
   </ItemGroup>

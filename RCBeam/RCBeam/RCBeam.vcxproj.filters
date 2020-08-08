@@ -13,30 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Materials">
-      <UniqueIdentifier>{f21d8f41-70d8-4af9-a14f-8cdc93bcac95}</UniqueIdentifier>
+    <Filter Include="MaterialModels">
+      <UniqueIdentifier>{2664e963-280a-4a3c-a491-ed057a91f32c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\BeamShapes">
-      <UniqueIdentifier>{176be12e-b300-4f28-90e9-6fad612bb6ec}</UniqueIdentifier>
+    <Filter Include="MaterialModels\Headers">
+      <UniqueIdentifier>{c119b09c-8fef-400a-9751-6be6def58e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaterialModels\Source">
+      <UniqueIdentifier>{eb0f6d4d-9a7a-46a5-93f3-660a4b328d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BeamGeometry">
+      <UniqueIdentifier>{50d3027e-a534-459f-aef8-0552cc0dde00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BeamGeometry\Headers">
+      <UniqueIdentifier>{7ab5ff23-674a-4d57-9f7a-7849555c6930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BeamGeometry\Source">
+      <UniqueIdentifier>{67dae19d-0254-449d-bd6b-38f8215569f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RebarGeometry">
+      <UniqueIdentifier>{bd94c9be-ec7c-4ded-a5f4-222e36517f39}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RCBeam.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Concrete.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>MaterialModels\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>MaterialModels\Source</Filter>
     </ClCompile>
     <ClCompile Include="Steel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>MaterialModels\Source</Filter>
     </ClCompile>
     <ClCompile Include="BeamShape.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>BeamGeometry\Source</Filter>
     </ClCompile>
     <ClCompile Include="RectangularBeam.cpp">
+      <Filter>BeamGeometry\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rebar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,18 +63,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Concrete.h">
-      <Filter>Header Files\Materials</Filter>
+      <Filter>MaterialModels\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
-      <Filter>Header Files\Materials</Filter>
+      <Filter>MaterialModels\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Steel.h">
-      <Filter>Header Files\Materials</Filter>
+      <Filter>MaterialModels\Headers</Filter>
     </ClInclude>
     <ClInclude Include="BeamShape.h">
-      <Filter>Header Files\BeamShapes</Filter>
+      <Filter>BeamGeometry\Headers</Filter>
     </ClInclude>
     <ClInclude Include="RectangularBeam.h">
+      <Filter>BeamGeometry\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rebar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

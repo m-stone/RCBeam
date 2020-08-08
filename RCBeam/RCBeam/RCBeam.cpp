@@ -5,10 +5,30 @@
 #include "Material.h"
 #include "Concrete.h"
 #include "Steel.h"
+#include "RectangularBeam.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
+
+    // Create SAM-35 Test concrete
+    Concrete SAM35;
+    // Create Gr 60 Steel for rebar
+    Steel Gr60;
+
+    // Set up Geometry and Boundary Conditions
+    // Gross Beam
+    RectangularBeam TestBeam(6.0, 12.0);
+    // Steel Geometry
+
+
+    std::cout << "Beam Properties:\n";
+    std::cout << "Area:\t" << TestBeam.GetArea() << std::endl;
+    std::cout << "width\t" << TestBeam.GetWidth() << std::endl;
+    std::cout << "height\t" << TestBeam.GetHeight() << std::endl;
+    std::cout << "Ixx:\t" << TestBeam.GetIxx() << std::endl;
+
+    //
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
