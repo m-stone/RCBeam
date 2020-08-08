@@ -4,11 +4,20 @@ class Concrete :
     public Material
 {
 protected:
+    // typical given properties are strength, density
+    // derived properties are modulus
+    // strain is material model dependent -- can be given or derived
     // protected elements here
     double m_CompressiveStrength;
 
-    // Strain Properties
-    std::vector<double> m_epsilon;
+    // Model Type
+    enum class ConcreteModelType {
+        ACI = 1,
+        Hognestad,
+        Power
+    };
+
+    ConcreteModelType m_ConcreteModel;
 
 public:
     // public elements here
@@ -18,7 +27,9 @@ public:
 
 	// Sets
     void UpdateProperties();
+    void SetMaterialModel(ConcreteModelType materialmodel);
 
 	// Gets
+    double GetStrength() { return m_CompressiveStrength; }
 };
 

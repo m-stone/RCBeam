@@ -4,6 +4,9 @@ class Steel :
     public Material
 {
 protected:
+    // typical given properties are yield strength, elasticity
+    // derived properties are strain
+    // but strain can be a given depending on material model type
     // protected elements
     double m_YieldStrength;
     double m_YieldStrain;
@@ -13,7 +16,7 @@ protected:
         EPP = 2
     };
 
-    SteelModelType SteelModel;
+    SteelModelType m_SteelModel;
 
 public:
     // public elements
@@ -21,7 +24,8 @@ public:
     Steel(double yield_strength, double modulus);
 
     // sets
-    void UpdateStrain();
+    void UpdateProperties();
+    void SetMaterialModel(SteelModelType steelmodel);
 
     // gets
 };
