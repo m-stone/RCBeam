@@ -55,7 +55,7 @@
       <Filter>BeamGeometry\Source</Filter>
     </ClCompile>
     <ClCompile Include="Rebar.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>RebarGeometry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,7 +78,7 @@
       <Filter>BeamGeometry\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Rebar.h">
-      <Filter>Header Files</Filter>
+      <Filter>RebarGeometry</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,9 +4,9 @@ Concrete::Concrete()
 {
 	// Default constructor
 	// 5000 psi
-	m_CompressiveStrength = 5000.0;
+	SetStrength(5000.0);
 	// 150 pcf
-	m_Density = 150.0;
+	SetDensity(150.0);
 	// Update modulus
 	UpdateProperties();
 	// ACI Model 
@@ -21,9 +21,9 @@ Concrete::Concrete()
 Concrete::Concrete(double strength)
 {
 	// Set Strength in psi
-	m_CompressiveStrength = strength;
+	SetStrength(strength);
 	// assume 150 pcf
-	m_Density = 150.0;
+	SetDensity(150.0);
 	// Update modulus
 	UpdateProperties();
 	SetMaterialModel(ConcreteModelType::ACI);

@@ -15,9 +15,9 @@ protected:
         ACI = 1,
         Hognestad,
         Power
-    };
+    } m_ConcreteModel;
 
-    ConcreteModelType m_ConcreteModel;
+    //ConcreteModelType m_ConcreteModel;
 
 public:
     // public elements here
@@ -26,6 +26,7 @@ public:
     Concrete(double strength);
 
 	// Sets
+    void SetStrength(double strength) { m_CompressiveStrength = strength; }
     void UpdateProperties();
     void SetMaterialModel(ConcreteModelType materialmodel);
 

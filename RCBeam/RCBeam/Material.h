@@ -18,6 +18,8 @@ public:
 	virtual void AddStrainValue(double strain);
 	virtual void AddStressValue(double stress);
 	virtual void UpdateProperties() = 0;
+	virtual void SetDensity(double density) { m_Density = density; }
+	virtual void SetModulus(double modulus) { m_Modulus = modulus; }
 
 	// Gets
 	double GetModulus() { return m_Modulus; }
