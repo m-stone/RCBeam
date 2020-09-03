@@ -7,10 +7,12 @@ Steel::Steel()
 	SetModulus(30.0e6);
 	SetMaterialModel(SteelModelType::Elastic);
 	UpdateProperties();
+	// Add Strain values
 	AddStrainValue(0.0);
 	AddStrainValue(m_YieldStrain);
+	// Add Stress Values
 	AddStressValue(0.0);
-	AddStressValue(m_YieldStrength);
+	AddStressValue(m_YieldStress);
 }
 
 Steel::Steel(double yield_strength, double modulus)
@@ -18,20 +20,22 @@ Steel::Steel(double yield_strength, double modulus)
 	// typical constructor given strength and modulus
 	SetYieldStrength(yield_strength);
 	SetModulus(modulus);
-	m_YieldStrength = yield_strength;
+	m_YieldStress = yield_strength;
 	m_Modulus = modulus;
 	SetMaterialModel(SteelModelType::Elastic);
 	UpdateProperties();
+	// Add Strain values
 	AddStrainValue(0.0);
 	AddStrainValue(m_YieldStrain);
+	// Add Stress Values
 	AddStressValue(0.0);
-	AddStressValue(m_YieldStrength);
+	AddStressValue(m_YieldStress);
 }
 
 void Steel::UpdateProperties()
 {
 	// update the yield strain
-	m_YieldStrain = m_YieldStrength / m_Modulus;
+	m_YieldStrain = m_YieldStress / m_Modulus;
 }
 
 void Steel::SetMaterialModel(SteelModelType steelmodel)

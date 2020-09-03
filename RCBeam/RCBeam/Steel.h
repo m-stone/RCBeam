@@ -8,7 +8,7 @@ protected:
     // derived properties are strain
     // but strain can be a given depending on material model type
     // protected elements
-    double m_YieldStrength;
+    double m_YieldStress;
     double m_YieldStrain;
 
     enum class SteelModelType {
@@ -24,14 +24,14 @@ public:
     Steel(double yield_strength, double modulus);
 
     // sets
-    void SetYieldStrength(double yield_strength) { m_YieldStrength = yield_strength; }
-    void SetYieldStrain() { m_YieldStrain = m_YieldStrength / m_Modulus; }
+    void SetYieldStrength(double yield_strength) { m_YieldStress = yield_strength; }
+    void SetYieldStrain() { m_YieldStrain = m_YieldStress / m_Modulus; }
     void SetYieldStrain(double yield_strain) { m_YieldStrain = yield_strain; }
     void UpdateProperties();
     void SetMaterialModel(SteelModelType steelmodel);
 
     // gets
-    double GetYieldStrength() { return m_YieldStrength; }
+    double GetYieldStrength() { return m_YieldStress; }
     double GetYieldStrain() { return m_YieldStrain; }
 };
 
