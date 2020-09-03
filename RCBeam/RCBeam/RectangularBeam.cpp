@@ -1,11 +1,15 @@
 #include "RectangularBeam.h"
 
-RectangularBeam::RectangularBeam(double width, double height)
+RectangularBeam::RectangularBeam(double width, double height, Concrete* pConcrete)
 {
+	//usual constructor
+	// Setup geometry
 	SetWidth(width);
 	SetHeight(height);
-	SetArea();
+	SetAreaGross();
 	SetInertia();
+	// set material
+	SetMaterial(pConcrete);
 }
 
 void RectangularBeam::SetWidth(double width)
@@ -18,7 +22,7 @@ void RectangularBeam::SetHeight(double height)
 	m_Height = height;
 }
 
-void RectangularBeam::SetArea()
+void RectangularBeam::SetAreaGross()
 {
 	m_Area_gross = m_Width * m_Height;
 }

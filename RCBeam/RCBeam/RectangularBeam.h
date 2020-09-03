@@ -7,12 +7,12 @@ protected:
     double m_Width, m_Height;
 
 public:
-    RectangularBeam(double width, double height);
+    RectangularBeam(double width, double height, Concrete* pConcrete);
     
     // Sets
     void SetWidth(double width);
     void SetHeight(double height);
-    void SetArea();
+    void SetAreaGross();
     void SetInertia();
 
     // Gets
