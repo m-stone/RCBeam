@@ -2,10 +2,10 @@
 //
 
 #include "pch.h"
-#include "Material.h"
 #include "Concrete.h"
 #include "Steel.h"
 #include "RectangularBeam.h"
+#include "Rebar.h"
 
 int main()
 {
@@ -18,16 +18,20 @@ int main()
 
     // Set up Geometry and Boundary Conditions
     // Gross Beam
-    RectangularBeam TestBeam(6.0, 12.0);
-    // Steel Geometry
+    RectangularBeam TestBeam(6.0, 12.0, &SAM35);
+    // Rebar Geometry
+    Rebar No7(&Gr60, 7);
 
 
-    std::cout << "Beam Properties:\n";
-    std::cout << "Area:\t" << TestBeam.GetArea() << std::endl;
+    std::cout << "Gross Beam Properties:\n";
+    std::cout << "Area:\t" << TestBeam.GetAreaGross() << std::endl;
     std::cout << "width\t" << TestBeam.GetWidth() << std::endl;
     std::cout << "height\t" << TestBeam.GetHeight() << std::endl;
     std::cout << "Ixx:\t" << TestBeam.GetIxx() << std::endl;
 
+    std::cout << "Rebar Properties:" << std::endl;
+    std::cout << "Diameter:" << No7.GetDiameter() << std::endl;
+    std::cout << "Area:" << No7.GetArea() << std::endl;
     //
 }
 

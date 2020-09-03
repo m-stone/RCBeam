@@ -22,16 +22,16 @@
     <Filter Include="MaterialModels\Source">
       <UniqueIdentifier>{eb0f6d4d-9a7a-46a5-93f3-660a4b328d65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BeamGeometry">
+    <Filter Include="GeometryGrossBeam">
       <UniqueIdentifier>{50d3027e-a534-459f-aef8-0552cc0dde00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BeamGeometry\Headers">
+    <Filter Include="GeometryGrossBeam\Headers">
       <UniqueIdentifier>{7ab5ff23-674a-4d57-9f7a-7849555c6930}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BeamGeometry\Source">
+    <Filter Include="GeometryGrossBeam\Source">
       <UniqueIdentifier>{67dae19d-0254-449d-bd6b-38f8215569f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RebarGeometry">
+    <Filter Include="GeometryRebar">
       <UniqueIdentifier>{bd94c9be-ec7c-4ded-a5f4-222e36517f39}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -49,13 +49,13 @@
       <Filter>MaterialModels\Source</Filter>
     </ClCompile>
     <ClCompile Include="BeamShape.cpp">
-      <Filter>BeamGeometry\Source</Filter>
+      <Filter>GeometryGrossBeam\Source</Filter>
     </ClCompile>
     <ClCompile Include="RectangularBeam.cpp">
-      <Filter>BeamGeometry\Source</Filter>
+      <Filter>GeometryGrossBeam\Source</Filter>
     </ClCompile>
     <ClCompile Include="Rebar.cpp">
-      <Filter>RebarGeometry</Filter>
+      <Filter>GeometryRebar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -72,13 +72,13 @@
       <Filter>MaterialModels\Headers</Filter>
     </ClInclude>
     <ClInclude Include="BeamShape.h">
-      <Filter>BeamGeometry\Headers</Filter>
+      <Filter>GeometryGrossBeam\Headers</Filter>
     </ClInclude>
     <ClInclude Include="RectangularBeam.h">
-      <Filter>BeamGeometry\Headers</Filter>
+      <Filter>GeometryGrossBeam\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Rebar.h">
-      <Filter>RebarGeometry</Filter>
+      <Filter>GeometryRebar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
