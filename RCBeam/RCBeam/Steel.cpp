@@ -3,7 +3,7 @@
 Steel::Steel()
 {
 	// default constructor - Gr60 steel
-	SetYieldStrength(60.0e3);
+	SetYieldStress(60.0e3);
 	SetModulus(30.0e6);
 	SetMaterialModel(SteelModelType::Elastic);
 	UpdateProperties();
@@ -18,7 +18,7 @@ Steel::Steel()
 Steel::Steel(double yield_strength, double modulus)
 {
 	// typical constructor given strength and modulus
-	SetYieldStrength(yield_strength);
+	SetYieldStress(yield_strength);
 	SetModulus(modulus);
 	m_YieldStress = yield_strength;
 	m_Modulus = modulus;

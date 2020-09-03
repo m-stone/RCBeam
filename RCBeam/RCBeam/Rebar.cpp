@@ -18,4 +18,5 @@ void Rebar::SetGeometry()
 void Rebar::SetBarSize(int barsize)
 {
 	m_BarSize = barsize;
+	SetGeometry();
 }
