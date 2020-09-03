@@ -24,14 +24,14 @@ public:
     Steel(double yield_strength, double modulus);
 
     // sets
-    void SetYieldStrength(double yield_strength) { m_YieldStress = yield_strength; }
+    void SetYieldStress(double yield_stress) { m_YieldStress = yield_stress; }
     void SetYieldStrain() { m_YieldStrain = m_YieldStress / m_Modulus; }
     void SetYieldStrain(double yield_strain) { m_YieldStrain = yield_strain; }
     void UpdateProperties();
     void SetMaterialModel(SteelModelType steelmodel);
 
     // gets
-    double GetYieldStrength() { return m_YieldStress; }
+    double GetYieldStress() { return m_YieldStress; }
     double GetYieldStrain() { return m_YieldStrain; }
 };
 
