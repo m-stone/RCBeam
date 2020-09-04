@@ -34,11 +34,11 @@
     <Filter Include="GeometryRebar">
       <UniqueIdentifier>{bd94c9be-ec7c-4ded-a5f4-222e36517f39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ReinforcedBeam">
+      <UniqueIdentifier>{0eef6e1c-c424-465d-9864-b307511222e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RCBeam.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Concrete.cpp">
       <Filter>MaterialModels\Source</Filter>
     </ClCompile>
@@ -56,6 +56,12 @@
     </ClCompile>
     <ClCompile Include="Rebar.cpp">
       <Filter>GeometryRebar</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RCBeam.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +85,15 @@
     </ClInclude>
     <ClInclude Include="Rebar.h">
       <Filter>GeometryRebar</Filter>
+    </ClInclude>
+    <ClInclude Include="RCBeam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="materials.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="geometry.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
