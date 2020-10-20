@@ -2,26 +2,30 @@
 //
 
 #include "pch.h"
-#include "Concrete.h"
-#include "Steel.h"
-#include "RectangularBeam.h"
-#include "Rebar.h"
+#include "geometry.h"
+#include "materials.h"
+#include "RCBeam.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
 
+    // Create Materials
     // Create SAM-35 Test concrete
     Concrete SAM35;
     // Create Gr 60 Steel for rebar
     Steel Gr60;
+    // Rebar 
+    Rebar No7(&Gr60, 7);
 
     // Set up Geometry and Boundary Conditions
     // Gross Beam
     RectangularBeam TestBeam(6.0, 12.0, &SAM35);
-    // Rebar Geometry
-    Rebar No7(&Gr60, 7);
-
+    // Create RC Beam
+    RCBeam TestRCBeam(&TestBeam);
+    // Add Rebar Layer to TestRCBeam
+    TestRCBeam.AddRebarLayer(2, &No7, 10.0);
+    TestRCBeam.Refresh();
 
     std::cout << "Gross Beam Properties:\n";
     std::cout << "Area:\t" << TestBeam.GetAreaGross() << std::endl;
@@ -32,6 +36,10 @@ int main()
     std::cout << "Rebar Properties:" << std::endl;
     std::cout << "Diameter:" << No7.GetDiameter() << std::endl;
     std::cout << "Area:" << No7.GetArea() << std::endl;
+
+    std::cout << "RC Beam Properties:" << std::endl;
+    std::cout << "Rebar layers:\t" << TestRCBeam.GetNumRebarLayers() << std::endl;
+    std::cout << "A_s:\t" << TestRCBeam.GetA_steel() << std::endl;
     //
 }
 

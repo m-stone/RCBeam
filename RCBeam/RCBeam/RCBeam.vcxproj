@@ -143,8 +143,10 @@
     <ClCompile Include="Concrete.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MomentAnalysis.cpp" />
     <ClCompile Include="RCBeam.cpp" />
     <ClCompile Include="Rebar.cpp" />
+    <ClCompile Include="RebarLayer.cpp" />
     <ClCompile Include="RectangularBeam.cpp" />
     <ClCompile Include="Steel.cpp" />
   </ItemGroup>
@@ -157,6 +159,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="RCBeam.h" />
     <ClInclude Include="Rebar.h" />
+    <ClInclude Include="RebarLayer.h" />
     <ClInclude Include="RectangularBeam.h" />
     <ClInclude Include="Steel.h" />
   </ItemGroup>

@@ -6,25 +6,37 @@ class RCBeam
 {
 protected:
 	// Gross beam section
-	RectangularBeam* m_pBeam;
+	RectangularBeam * m_pBeam;
 	// Rebar (size)
-	Rebar* m_pRebar;
+	//Rebar * m_pRebar;
+	// Vector of Rebar Layers
+	std::vector<RebarLayer *> m_pRebarLayers;
+	// Vector of Rebar 
+	std::vector<Rebar*> m_pRebar;
+	
 	// Rebar number and depth
-	int m_n_bars;
-	double m_d_bar;
+	int m_num_rebarlayers = 0;
 
 	// Derived Properties
-	double A_steel;
+	double A_steel = 0.0;
 
 public:
-	RCBeam(RectangularBeam* pBeam, Rebar* pRebar, int n_bars, double d_bar);
+	RCBeam(RectangularBeam* pBeam);
+	~RCBeam();
 
 	// Sets
-	void SetNumBars(int n_bars) { m_n_bars = n_bars; }
-	double SetBarDepth(double d_bar) { m_d_bar = d_bar; }
-	void SetASteel();
+	void AddRebarLayer(int num_bars, Rebar * pRebar, double depth);
+	void SetA_steel();
+	void Refresh();
 
-	// Gets
-	double GetASteel() { return A_steel; }
+	// Steel Gets
+	int GetNumRebarLayers() { return m_num_rebarlayers; }
+	double GetA_steel() { return A_steel; }
+	double getYieldStress(int steel_layer) { return m_pRebarLayers[steel_layer]->getYieldStress(); }
+	double getSteelStress(int steel_layer, double strain) { return m_pRebarLayers[steel_layer]->getStress(strain); }
+
+	// Concrete Gets
+	double getBeamWidth() { return m_pBeam->GetWidth(); }
+	double getBeamHeight() { return m_pBeam->GetHeight(); }
 };
 

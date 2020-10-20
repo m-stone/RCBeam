@@ -25,5 +25,9 @@ public:
 	// gets
 	double GetDiameter() { return m_Diameter; }
 	double GetArea() { return m_Area; }
+	
+	// Steel Getters 
+	double getStress(double strain) { return m_pSteel->GetStress(strain); }
+	double getYieldStress() { return m_pSteel->GetYieldStress(); }
 };
 
