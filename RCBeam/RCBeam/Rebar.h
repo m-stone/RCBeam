@@ -1,6 +1,5 @@
 #pragma once
 #include "pch.h"
-#include "Steel.h"
 
 class Rebar
 {
@@ -9,25 +8,28 @@ protected:
 	int m_BarSize;
 
 	// Steel type
-	Steel* m_pSteel;
+	Steel* m_pSteel1;
+	std::shared_ptr<Steel> m_pSteel;
 
 public:
 	// Constructors
 	Rebar(Steel* pSteeltype, int barsize);
+	Rebar(std::shared_ptr<Steel> & pSteeltype, int barsize);
 
 	// sets
-	void SetDiameter(double diameter) { m_Diameter = diameter; }
-	void SetArea(double diameter) { m_Area = 3.14159 * pow(diameter, 2) / 4; }
-	void SetBarSize(int barsize);
-	void SetGeometry();
-	void SetMaterial(Steel* pSteelType) { m_pSteel = pSteelType; }
+	void setDiameter(double diameter) { this->m_Diameter = diameter; }
+	void setArea(double area) { this->m_Area = area; }
+	void setBarSize(int barsize);
+	void setGeometry();
+	void setMaterial(Steel* pSteelType) { this->m_pSteel1 = pSteelType; }
 
 	// gets
-	double GetDiameter() { return m_Diameter; }
-	double GetArea() { return m_Area; }
+	double getDiameter() { return this->m_Diameter; }
+	double getArea() { return this->m_Area; }
+	double getBarSize() { return this->m_BarSize; }
 	
 	// Steel Getters 
-	double getStress(double strain) { return m_pSteel->GetStress(strain); }
-	double getYieldStress() { return m_pSteel->GetYieldStress(); }
+	double getStress(double strain) { return m_pSteel->getStress(strain); }
+	double getYieldStress() { return m_pSteel->getYieldStress(); }
 };
 

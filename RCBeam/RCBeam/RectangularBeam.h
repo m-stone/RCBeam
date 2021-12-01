@@ -7,16 +7,17 @@ protected:
     double m_Width, m_Height;
 
 public:
-    RectangularBeam(double width, double height, Concrete* pConcrete);
+    RectangularBeam(double width, double height, std::shared_ptr<Concrete>& pConcrete);
+    RectangularBeam(double width, double height, std::shared_ptr<Concrete>& pConcrete, double length);
     
     // Sets
-    void SetWidth(double width);
-    void SetHeight(double height);
-    void SetAreaGross();
-    void SetInertia();
+    void setWidth(double width);
+    void setHeight(double height);
+    void setAreaGross();
+    void setInertia();
 
     // Gets
-    double GetWidth() { return m_Width; }
-    double GetHeight() { return m_Height; }
+    double getWidth() { return m_Width; }
+    double getHeight() { return m_Height; }
 };
 
