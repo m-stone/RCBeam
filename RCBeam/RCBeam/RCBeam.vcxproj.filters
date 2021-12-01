@@ -13,15 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="MaterialModels">
-      <UniqueIdentifier>{2664e963-280a-4a3c-a491-ed057a91f32c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MaterialModels\Headers">
-      <UniqueIdentifier>{c119b09c-8fef-400a-9751-6be6def58e8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MaterialModels\Source">
-      <UniqueIdentifier>{eb0f6d4d-9a7a-46a5-93f3-660a4b328d65}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GeometryGrossBeam">
       <UniqueIdentifier>{50d3027e-a534-459f-aef8-0552cc0dde00}</UniqueIdentifier>
     </Filter>
@@ -39,15 +30,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Concrete.cpp">
-      <Filter>MaterialModels\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>MaterialModels\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Steel.cpp">
-      <Filter>MaterialModels\Source</Filter>
-    </ClCompile>
     <ClCompile Include="BeamShape.cpp">
       <Filter>GeometryGrossBeam\Source</Filter>
     </ClCompile>
@@ -60,28 +42,22 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RCBeam.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RebarLayer.cpp">
       <Filter>GeometryRebar</Filter>
     </ClCompile>
     <ClCompile Include="MomentAnalysis.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RCBeam.cpp">
+      <Filter>ReinforcedBeam</Filter>
+    </ClCompile>
+    <ClCompile Include="StructAnalysis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Concrete.h">
-      <Filter>MaterialModels\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>MaterialModels\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Steel.h">
-      <Filter>MaterialModels\Headers</Filter>
     </ClInclude>
     <ClInclude Include="BeamShape.h">
       <Filter>GeometryGrossBeam\Headers</Filter>
@@ -92,16 +68,19 @@
     <ClInclude Include="Rebar.h">
       <Filter>GeometryRebar</Filter>
     </ClInclude>
-    <ClInclude Include="RCBeam.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="materials.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="geometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RebarLayer.h">
+      <Filter>GeometryRebar</Filter>
+    </ClInclude>
+    <ClInclude Include="RCBeam.h">
+      <Filter>ReinforcedBeam</Filter>
+    </ClInclude>
+    <ClInclude Include="MomentAnalysis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StructAnalysis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

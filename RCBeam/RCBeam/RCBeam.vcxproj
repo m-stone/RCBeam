@@ -88,11 +88,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\stone\source\repos\Materials\Materials;C:\Users\stone\source\repos\MathLibrary\MathLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\stone\source\repos\Materials\$(IntDir);"C:\Users\stone\source\repos\MathLibrary\$(IntDir)";..\..\MathLibrary\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Materials.lib;MathLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "c:\Users\stone\source\repos\Materials\$(IntDir)Materials.dll" "$(OutDir)"
+xcopy /y /d "c:\Users\stone\source\repos\MathLibrary\$(IntDir)MathLibrary.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -102,13 +109,20 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\m.stone\source\repos\Materials\Materials;C:\Users\m.stone\source\repos\MathLibrary\MathLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\m.stone\source\repos\Materials\$(IntDir);"C:\Users\m.stone\source\repos\MathLibrary\$(IntDir)";..\..\MathLibrary\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Materials.lib;MathLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "c:\Users\m.stone\source\repos\Materials\$(IntDir)Materials.dll" "$(OutDir)"
+xcopy /y /d "c:\Users\m.stone\source\repos\MathLibrary\$(IntDir)MathLibrary.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -140,28 +154,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BeamShape.cpp" />
-    <ClCompile Include="Concrete.cpp" />
-    <ClCompile Include="Material.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MomentAnalysis.cpp" />
     <ClCompile Include="RCBeam.cpp" />
     <ClCompile Include="Rebar.cpp" />
     <ClCompile Include="RebarLayer.cpp" />
     <ClCompile Include="RectangularBeam.cpp" />
-    <ClCompile Include="Steel.cpp" />
+    <ClCompile Include="StructAnalysis.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeamShape.h" />
-    <ClInclude Include="Concrete.h" />
     <ClInclude Include="geometry.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="materials.h" />
+    <ClInclude Include="MomentAnalysis.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RCBeam.h" />
     <ClInclude Include="Rebar.h" />
     <ClInclude Include="RebarLayer.h" />
     <ClInclude Include="RectangularBeam.h" />
-    <ClInclude Include="Steel.h" />
+    <ClInclude Include="StructAnalysis.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
