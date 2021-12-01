@@ -3,53 +3,204 @@
 
 #include "pch.h"
 #include "geometry.h"
-#include "materials.h"
 #include "RCBeam.h"
+#include "MomentAnalysis.h"
+#include "StructAnalysis.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    // SAM35 35MPa concrete
+    //Concrete* pSAM35 = createHognestadConcrete(5300.0);
+    std::shared_ptr<Concrete> pSAM35(createHognestadConcrete(5076.33));
 
-    // Create Materials
-    // Create SAM-35 Test concrete
-    Concrete SAM35;
-    // Create Gr 60 Steel for rebar
-    Steel Gr60;
-    // Rebar 
-    Rebar No7(&Gr60, 7);
+    // Gr60, Gr70 Steel
+    std::shared_ptr<Steel> pGr60(createEPPSteel(60.0e3, 30.0e6));
+    std::shared_ptr<Steel> pGr70(createEPPSteel(72519.0, 30382139.0));
 
-    // Set up Geometry and Boundary Conditions
-    // Gross Beam
-    RectangularBeam TestBeam(6.0, 12.0, &SAM35);
-    // Create RC Beam
-    RCBeam TestRCBeam(&TestBeam);
-    // Add Rebar Layer to TestRCBeam
-    TestRCBeam.AddRebarLayer(2, &No7, 10.0);
-    TestRCBeam.Refresh();
+    // Create Rebar
+    std::shared_ptr<Rebar> pNo6(new Rebar(pGr60, 6));   // number 6
+    std::shared_ptr<Rebar> pNo7(new Rebar(pGr60, 7));   // number 7
+    std::shared_ptr<Rebar> pNo8(new Rebar(pGr60, 8));   //number 8
+    std::shared_ptr<Rebar> pM10(new Rebar(pGr70, 3.1496));   // Metric 10
+
+    // Feldman Seiss Beams
+    // create a beam with length 9ft
+    double beam_length = 9.0;
+    double beam_width, beam_height;
+
+    std::cout << "Enter Beam Width (inches): ";
+    std::cin >> beam_width;
+
+    std::cout << "Enter Beam Height (inches): ";
+    std::cin >> beam_height;
+
+    std::cout << "Enter Beam Length (feet): ";
+    std::cin >> beam_length;
+
+    // Create beam cross section:
+    std::shared_ptr<RectangularBeam> pBeamSection(new RectangularBeam(beam_width, beam_height, pSAM35, beam_length * 12.0));
+    // Create Beam:
+    std::shared_ptr<RCBeam> TestRCBeam(new RCBeam(pBeamSection,beam_length*12.0));
+
+    int n_bars = 1;
+    std::cout << "Enter number of rebar layers: ";
+    std::cin >> n_bars;
+    int steel_grade = 60;
+    std::cout << "Enter steel grade (ksi): ";
+    std::cin >> steel_grade;
+    for (int i = 0; i < n_bars; i++)
+    {
+        //std::cout<<""
+    }
+    //TestRCBeam->AddRebarLayer(2, pNo6, 2.0);
+    TestRCBeam->AddRebarLayer(1, pM10, 1.5748);
+    TestRCBeam->AddRebarLayer(1, pM10, 12.20472);
+    TestRCBeam->Refresh();
 
     std::cout << "Gross Beam Properties:\n";
-    std::cout << "Area:\t" << TestBeam.GetAreaGross() << std::endl;
-    std::cout << "width\t" << TestBeam.GetWidth() << std::endl;
-    std::cout << "height\t" << TestBeam.GetHeight() << std::endl;
-    std::cout << "Ixx:\t" << TestBeam.GetIxx() << std::endl;
+    //std::cout << "Area:\t" << TestBeam.getAreaGross() << std::endl;
+    //std::cout << "width\t" << TestBeam.getWidth() << std::endl;
+    //std::cout << "height\t" << TestBeam.getHeight() << std::endl;
+    //std::cout << "Ixx:\t" << TestBeam.getIxx() << std::endl;
+    std::cout << "Length:\t" << TestRCBeam->getBeamLength() << std::endl;
 
-    std::cout << "Rebar Properties:" << std::endl;
-    std::cout << "Diameter:" << No7.GetDiameter() << std::endl;
-    std::cout << "Area:" << No7.GetArea() << std::endl;
+    std::cout << "Concrete Propreties:" << std::endl;
+    std::cout << "Strength:\t" << pSAM35->getStrength() << std::endl;
 
     std::cout << "RC Beam Properties:" << std::endl;
-    std::cout << "Rebar layers:\t" << TestRCBeam.GetNumRebarLayers() << std::endl;
-    std::cout << "A_s:\t" << TestRCBeam.GetA_steel() << std::endl;
-    //
+    std::cout << "Rebar layers:\t" << TestRCBeam->getNumRebarLayers() << std::endl;
+    std::cout << "A_s gross:\t" << TestRCBeam->getAsteel_gross() << std::endl;
+    for (int i = 0; i < TestRCBeam->getNumRebarLayers(); i++)
+    {
+        std::cout << "Rebar depth:\t" << TestRCBeam->getSteelLayerDepth(i) << std::endl;
+        std::cout << "Rebar area:\t" << TestRCBeam->getAsteel(i) << std::endl;
+        std::cout << "Rebar strength:\t" << pNo7->getYieldStress() << std::endl;
+    }
+
+    // Moment phi calculations
+    // Create vector of maximum concrete strain
+    std::vector<double> eps_cm;
+    eps_cm.push_back(0.0);
+    // create vector of neutral axis depth
+    std::vector<double> c_na;
+    c_na.push_back(TestRCBeam->getBeamHeight() / 2);
+    // create vector of curvature
+    std::vector<double> phi;
+    phi.push_back(0.0);
+    // create vector of moment
+    std::vector<double> M;
+    M.push_back(0.0);
+
+    // use ultimate concrete strain as eps max
+    double eps_cm_max = 1.5 * pSAM35->getEpsCu();
+    // number of steps and strain step-size
+    int n_steps = 1001;
+    double delta_eps_cm = (eps_cm_max / n_steps);
+
+    // report data:
+    std::cout << "Performing Moment-Curvature Analysis to maximum compression strain of " << eps_cm_max << ". . ."<< std::endl;
+
+    // loop through and calculate epsilon, moment, phi
+    for (int i = 1; i <= n_steps; i++)
+    {
+        // increment eps_cm
+        eps_cm.push_back(i * delta_eps_cm);
+        // Run Moment function to calculate c,M
+        M.push_back(MomentEpscm(eps_cm.back(), TestRCBeam, pSAM35, pGr60, c_na));
+        // Calculate phi
+        phi.push_back(eps_cm.back() / c_na.back());
+        //std::cout << eps_cm.back() << "\t" << c_na.back() << "\t" << phi.back() << "\t" << M.back() << std::endl;
+    }
+
+    // Load-displacement calculations -- need full moment-curvature relationship
+    // create vector of loads:
+    std::vector<double>P;
+
+    // choose load location:
+    double xp = TestRCBeam->getBeamLength() * 0.5;  //central point load
+
+    // Choose deflection location:
+    double x0 = xp; //location of deflection
+
+    std::cout << "Performing Load-Deflection calculation using calculated moments. . ." << std::endl;
+    
+    // calculate deflection for each curvature value:
+    std::vector<double>displacement;
+    for (int i = 0; i <=n_steps; i++)
+    {
+        // Calculate load
+        P.push_back(4 * M.at(i) / TestRCBeam->getBeamLength());
+        // calculate displacement
+        displacement.push_back(Deflection_PointLoad(TestRCBeam, P.at(i), M, phi, xp, x0));
+    }
+
+    // Print results:
+    // Set format
+    /*
+    std::cout.unsetf(std::ios::floatfield);                // floatfield not set
+    std::cout.setf(std::ios::scientific, std::ios::floatfield);
+    std::cout.precision(4);
+    std::cout << "Moment phi calculations\n";
+    std::cout << "EPS\t\tC\t\tPHI\t\tM\t\tDelta\t\tLoad" << std::endl;;
+    //std::cout << "Deflection\tLoad" << std::endl;
+    for (int i = 0; i <= n_steps; i++)
+    {
+        std::cout << eps_cm.at(i) << "\t" << c_na.at(i) << "\t" << phi.at(i) << "\t" << M.at(i)<<"\t";
+        std::cout << displacement.at(i) << "\t" << P.at(i) << std::endl;
+    }
+    */
+    
+    // Output data to csv.
+    // create file pointer
+    std::ofstream outputfile;
+
+    std::cout << "Writing data to file. . ." << std::endl;
+
+    // open file in output truncate
+    outputfile.open("c:\\RCBeam\\m-phi.csv", std::ios::out | std::ios::trunc);
+    // check to make sure file opened correctly
+    if (outputfile.is_open())
+    {
+        // write the header line
+        outputfile << "phi,M,eps_cm,c\n";
+        // write the data lines
+        for (auto i = 0; i <= n_steps; i++)
+        {
+            outputfile << phi.at(i) << "," << M.at(i) << "," << eps_cm.at(i) <<","<<c_na.at(i)<< "\n";
+        }
+        outputfile.close();
+    }
+    else
+    {
+        std::cout << "Could not open m-phi file for writing.\n";
+    }
+    // Close the file
+    outputfile.close();
+
+    // Open file for p-delta
+    outputfile.open("c:\\RCBeam\\p-delta.csv", std::ios::out | std::ios::trunc);
+    // check to make sure file opened correctly
+    if (outputfile.is_open())
+    {
+        // write the header line
+        outputfile << "delta,load\n";
+        // write the data lines
+        for (auto i = 0; i <= n_steps; i++)
+        {
+            outputfile << displacement.at(i)<<","<<P.at(i) << "\n";
+        }
+        outputfile.close();
+    }
+    else
+    {
+        std::cout << "Could not open file for writing.\n";
+    }
+    // Close the file
+    outputfile.close();
+        
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
