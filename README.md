@@ -6,3 +6,10 @@ This is an application to solve the moment-curvature and 3-point load deflection
 Results are then written to two CSV files located at c:\RCBeam\ with columns for curvature, moment; and columns for displacement, load. 
 
 Units are in US standard -- usually inches, lbs. 
+
+The test beam is from personal tests performed on RC Beams based on work done by Feldman and Seiss at UIUC. The beam is a 10' long (9' clear span) simply supported beam reinforced with 2#6 for compression and 2#7 for tension. The beam is shear reinforced with closed #3 stirrups at 5" o/c. The concrete material is SAM-35 from ERDC, with a target 28-day compressive strength of 35 MPa. 
+
+![image](https://user-images.githubusercontent.com/1676839/144312309-6447cc2c-f77b-45f7-8dc7-168e853ef5ad.png)
+
+![image](https://user-images.githubusercontent.com/1676839/144312335-7f2a03a3-4c42-4858-998e-f29907001105.png)
+
