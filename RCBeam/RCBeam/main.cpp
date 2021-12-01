@@ -23,38 +23,37 @@ int main()
     std::shared_ptr<Rebar> pNo8(new Rebar(pGr60, 8));   //number 8
     std::shared_ptr<Rebar> pM10(new Rebar(pGr70, 3.1496));   // Metric 10
 
-    // Feldman Seiss Beams
-    // create a beam with length 9ft
+    /*
+    Ideally would want a program that accepts input and then runs calculations.
+    But that would take some major restructuring (possible, but time consuming. More concerned with business logic here ATM.
+    So lets comment out the parts about inputs, and just run the case that we are interested in.
+
+    Running with Feldman-Seiss / Koch-Stone beams series B1.
+    */
+
+    // create a beam with clear span length 9ft
     double beam_length = 9.0;
-    double beam_width, beam_height;
+    double beam_width = 6.0;
+    double beam_height = 12.0;
 
-    std::cout << "Enter Beam Width (inches): ";
-    std::cin >> beam_width;
+    
+    //std::cout << "Enter Beam Width (inches): ";
+    //std::cin >> beam_width;
 
-    std::cout << "Enter Beam Height (inches): ";
-    std::cin >> beam_height;
+    //std::cout << "Enter Beam Height (inches): ";
+    //std::cin >> beam_height;
 
-    std::cout << "Enter Beam Length (feet): ";
-    std::cin >> beam_length;
+    //std::cout << "Enter Beam Length (feet): ";
+    //std::cin >> beam_length;
 
     // Create beam cross section:
     std::shared_ptr<RectangularBeam> pBeamSection(new RectangularBeam(beam_width, beam_height, pSAM35, beam_length * 12.0));
     // Create Beam:
     std::shared_ptr<RCBeam> TestRCBeam(new RCBeam(pBeamSection,beam_length*12.0));
 
-    int n_bars = 1;
-    std::cout << "Enter number of rebar layers: ";
-    std::cin >> n_bars;
-    int steel_grade = 60;
-    std::cout << "Enter steel grade (ksi): ";
-    std::cin >> steel_grade;
-    for (int i = 0; i < n_bars; i++)
-    {
-        //std::cout<<""
-    }
-    //TestRCBeam->AddRebarLayer(2, pNo6, 2.0);
-    TestRCBeam->AddRebarLayer(1, pM10, 1.5748);
-    TestRCBeam->AddRebarLayer(1, pM10, 12.20472);
+    // Add Rebars (2#6 Compression, 2#7 Tension)
+    TestRCBeam->AddRebarLayer(2, pNo6, 1.5);
+    TestRCBeam->AddRebarLayer(2, pNo7, 10.5);
     TestRCBeam->Refresh();
 
     std::cout << "Gross Beam Properties:\n";
