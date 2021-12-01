@@ -1,14 +1,12 @@
 #include "Rebar.h"
 
-Rebar::Rebar(Steel* pSteeltype, int barsize)
+Rebar::Rebar(std::shared_ptr<Steel>& pSteeltype, int barsize)
 {
-	// Set Steel Type
-	this->m_pSteel1 = pSteeltype;
-	// Set Barsize
+	m_pSteel = pSteeltype;
 	setBarSize(barsize);
 }
 
-Rebar::Rebar(std::shared_ptr<Steel>& pSteeltype, int barsize)
+Rebar::Rebar(std::shared_ptr<Steel>& pSteeltype, double barsize)
 {
 	m_pSteel = pSteeltype;
 	setBarSize(barsize);
@@ -79,3 +77,14 @@ void Rebar::setBarSize(int barsize)
 	this->m_BarSize = barsize;
 	setGeometry();
 }
+
+void Rebar::setBarSize(double barsize)
+{
+	this->m_BarSize = (int)barsize;
+	double diameter = m_BarSize / 8.0;
+	double area = 3.14159 * pow(diameter, 2) / 4;
+	setDiameter(diameter);
+	setArea(diameter);	
+}
+
+

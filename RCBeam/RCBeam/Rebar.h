@@ -8,20 +8,22 @@ protected:
 	int m_BarSize;
 
 	// Steel type
-	Steel* m_pSteel1;
+	//Steel* m_pSteel1;
 	std::shared_ptr<Steel> m_pSteel;
 
 public:
 	// Constructors
 	Rebar(Steel* pSteeltype, int barsize);
 	Rebar(std::shared_ptr<Steel> & pSteeltype, int barsize);
+	Rebar(std::shared_ptr<Steel>& pSteeltype, double barsize);
 
 	// sets
 	void setDiameter(double diameter) { this->m_Diameter = diameter; }
 	void setArea(double area) { this->m_Area = area; }
 	void setBarSize(int barsize);
+	void setBarSize(double barsize);
 	void setGeometry();
-	void setMaterial(Steel* pSteelType) { this->m_pSteel1 = pSteelType; }
+	void setMaterial(std::shared_ptr<Steel>& pSteeltype) { this->m_pSteel = pSteeltype; }
 
 	// gets
 	double getDiameter() { return this->m_Diameter; }
