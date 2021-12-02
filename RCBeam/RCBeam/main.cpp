@@ -14,7 +14,7 @@ int main()
     std::shared_ptr<Concrete> pSAM35(createHognestadConcrete(5076.33));
 
     // Gr60, Gr70 Steel
-    std::shared_ptr<Steel> pGr60(createEPPSteel(60.0e3, 30.0e6));
+    std::shared_ptr<Steel> pGr60(createEPPSteel(69.0e3, 30.0e6));
     std::shared_ptr<Steel> pGr70(createEPPSteel(72519.0, 30382139.0));
 
     // Create Rebar
@@ -95,13 +95,14 @@ int main()
     sigma_concrete.push_back(0.0);
 
     // use ultimate concrete strain as eps max
-    double eps_cm_max = 1.5 * pSAM35->getEpsCu();
+    double eps_cm_max = 10*1.5 * pSAM35->getEpsCu();
     // number of steps and strain step-size
     int n_steps = 1001;
     double delta_eps_cm = (eps_cm_max / n_steps);
 
     // report data:
     std::cout << "Performing Moment-Curvature Analysis to maximum compression strain of " << eps_cm_max << ". . ."<< std::endl;
+
 
     // loop through and calculate epsilon, moment, phi
     for (int i = 1; i <= n_steps; i++)
@@ -116,6 +117,10 @@ int main()
         phi.push_back(eps_cm.back() / c_na.back());
         //std::cout << eps_cm.back() << "\t" << c_na.back() << "\t" << phi.back() << "\t" << M.back() << std::endl;
     }
+
+
+    // TODO: Sort M,phi before running p-delta analysis.
+    std::sort(phi.begin(), phi.end());
 
     // Load-displacement calculations -- need full moment-curvature relationship
     // create vector of loads:

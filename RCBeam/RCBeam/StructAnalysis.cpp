@@ -79,6 +79,7 @@ double Deflection_PointLoad(std::shared_ptr<RCBeam>& RCBeam, double P_0, std::ve
 		// Calculate the moment at the current location
 		moment = Moment_PointLoad(RCBeam, P_0, x_load, i*delta_L);
 		// calculate the curvature given this moment
+		// TODO: This only works for a constantly increasing M curve. Need method to allow for M to decrease.
 		curvature.push_back(linterp_double(Moment, Phi, moment));		
 	}
 

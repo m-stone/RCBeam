@@ -9,3 +9,4 @@
 #include "Materials.h"
 #include "MathLibrary.h"
 #include <memory>
+#include <algorithm>
