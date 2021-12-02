@@ -18,3 +18,5 @@ The test beam is from tests performed on RC Beams based on work done by Feldman 
 ### 3-point Load-deflection graph
 ![image](https://user-images.githubusercontent.com/1676839/144312335-7f2a03a3-4c42-4858-998e-f29907001105.png)
 
+#### Initial run:
+![image](https://user-images.githubusercontent.com/1676839/144454647-f4877067-ab1c-4fb8-8962-71242df86df3.png)
