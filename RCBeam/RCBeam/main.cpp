@@ -90,6 +90,10 @@ int main()
     std::vector<double> M;
     M.push_back(0.0);
 
+    // Create vector of concrete stress
+    std::vector<double> sigma_concrete;
+    sigma_concrete.push_back(0.0);
+
     // use ultimate concrete strain as eps max
     double eps_cm_max = 1.5 * pSAM35->getEpsCu();
     // number of steps and strain step-size
@@ -104,6 +108,8 @@ int main()
     {
         // increment eps_cm
         eps_cm.push_back(i * delta_eps_cm);
+        // store concrete stress
+        sigma_concrete.push_back(pSAM35->getStress(eps_cm.back()));
         // Run Moment function to calculate c,M
         M.push_back(MomentEpscm(eps_cm.back(), TestRCBeam, pSAM35, pGr60, c_na));
         // Calculate phi
@@ -161,11 +167,11 @@ int main()
     if (outputfile.is_open())
     {
         // write the header line
-        outputfile << "phi,M,eps_cm,c\n";
+        outputfile << "phi,M,eps_cm,c,sigma_c\n";
         // write the data lines
         for (auto i = 0; i <= n_steps; i++)
         {
-            outputfile << phi.at(i) << "," << M.at(i) << "," << eps_cm.at(i) <<","<<c_na.at(i)<< "\n";
+            outputfile << phi.at(i) << "," << M.at(i) << "," << eps_cm.at(i) <<","<<c_na.at(i)<<","<< sigma_concrete.at(i) << "\n";
         }
         outputfile.close();
     }
