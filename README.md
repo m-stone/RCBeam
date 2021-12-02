@@ -7,7 +7,7 @@ Results are then written to two CSV files located at c:\RCBeam\ with columns for
 
 Units are in US standard -- usually inches, lbs. 
 
-The test beam is from tests performed on RC Beams based on work done by me during my MS at UF. The beam is a 10' long (9' clear span) simply supported beam reinforced with Gr60 rebar -- 2#6 for compression and 2#7 for tension. The beam is shear reinforced with closed #3 stirrups at 5" o/c. The concrete material is SAM-35 from ERDC, with a target 28-day compressive strength of 35 MPa. Shear is not taken into account. Steel model is EPP with yield strength of 60ksi, and the concrete model is shown below. Concrete tension stiffening is taken into account using Hsu's model.
+The test beam is from tests performed on RC Beams based on work done by me during my MS at UF. The beam is a 10' long (9' clear span) simply supported beam reinforced with Gr60 rebar -- 2#6 for compression and 2#7 for tension. The beam is shear reinforced with closed #3 stirrups at 5" o/c. The concrete material is SAM-35 from ERDC, with a target 28-day compressive strength of 35 MPa. Shear is not taken into account. Steel model is EPP with yield strength of 60ksi, and the concrete model is shown below. Concrete tension stiffening is taken into account.
 
 ### Material Properties
 ![image](https://user-images.githubusercontent.com/1676839/144453511-91a11a54-0284-4326-aef5-d7cf7a5b8c2e.png)
