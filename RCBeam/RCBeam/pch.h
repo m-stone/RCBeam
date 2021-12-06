@@ -10,3 +10,5 @@
 #include "MathLibrary.h"
 #include <memory>
 #include <algorithm>
+#include <string>
+#include <iterator>
