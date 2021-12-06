@@ -119,8 +119,20 @@ int main()
     }
 
 
-    // TODO: Sort M,phi before running p-delta analysis.
-    std::sort(phi.begin(), phi.end());
+    //// TODO: Sort M,phi before running p-delta analysis.
+    //// Zip vectors together
+    //std::vector<std::pair<double,double>> zipped;
+    //zip(phi, M, zipped);
+
+    //// Sort the vector of pairs
+    //std::sort(std::begin(zipped), std::end(zipped),
+    //    [&](const auto& a, const auto& b)
+    //    {
+    //        return a.first > b.first;
+    //    });
+
+    //// Write the sorted pairs back to the original vectors
+    //unzip(zipped, phi, M);
 
     // Load-displacement calculations -- need full moment-curvature relationship
     // create vector of loads:

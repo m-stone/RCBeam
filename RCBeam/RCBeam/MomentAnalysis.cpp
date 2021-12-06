@@ -256,4 +256,3 @@ double epsilon_steel(double c_na, double depth, double eps_cm)
 {
 	return (eps_cm * (c_na - depth) / c_na);
 }
-
